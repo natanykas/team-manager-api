@@ -1,0 +1,8 @@
+{
+  "success": false,
+  "parsed_response_body":{
+    "status": 404,
+    "message": "Not Found"
+  },
+  "exception_message": "404 Not Found"
+}

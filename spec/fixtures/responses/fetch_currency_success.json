@@ -1,0 +1,13 @@
+{
+  "success":true,
+  "parsed_response_body":[
+    {
+      "currencies":{
+        "BRL":{
+          "name":"Brazilian real",
+          "symbol":"R$"
+        }
+      }
+    }
+  ]
+}
