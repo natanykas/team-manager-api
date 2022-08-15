@@ -2243,3 +2243,101 @@ Processing by MembersController#show as */*
 Completed 200 OK in 79ms (Views: 0.6ms | ActiveRecord: 11.5ms | Allocations: 11811)
 
 
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE DATABASE "team-manager-api_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "team-manager-api_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(159740919961543620)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(159740919961543620)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.18.0.1 at 2022-08-15 23:33:39 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.5ms | Allocations: 603)
+Completed 200 OK in 88ms (Views: 42.6ms | ActiveRecord: 0.0ms | Allocations: 4967)
+
+
+Started GET "/favicon.ico" for 172.18.0.1 at 2022-08-15 23:33:40 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/members" for 172.18.0.1 at 2022-08-15 23:36:33 +0000
+  
+NoMethodError (undefined method `protect_from_forgery' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:4:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:3:in `<main>'
+app/controllers/members_controller.rb:3:in `<main>'
+Started POST "/members" for 172.18.0.1 at 2022-08-15 23:38:30 +0000
+Processing by MembersController#create as */*
+  Parameters: {"name"=>"Natany Test 1", "salary_per_year"=>70000, "country"=>"brasil", "tags"=>["ruby-on-rails", "react"], "type_contract_attributes"=>{"name"=>0, "duration"=>12, "role"=>0}, "member"=>{"name"=>"Natany Test 1", "salary_per_year"=>70000, "country"=>"brasil", "tags"=>["ruby-on-rails", "react"], "type_contract_attributes"=>{"name"=>0, "duration"=>12, "role"=>0}}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/members_controller.rb:10:in `create'
+  [1m[36mMember Create (17.0ms)[0m  [1m[32mINSERT INTO "members" ("name", "salary_per_year", "country", "currency", "tags", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Natany Test 1"], ["salary_per_year", "70000.0"], ["country", "brasil"], ["currency", "{\"BRL\":{\"name\":\"Brazilian real\",\"symbol\":\"R$\"}}"], ["tags", "{ruby-on-rails,react}"], ["created_at", "2022-08-15 23:38:32.543567"], ["updated_at", "2022-08-15 23:38:32.543567"]]
+  ↳ app/controllers/members_controller.rb:10:in `create'
+  [1m[36mTypeContract Create (10.6ms)[0m  [1m[32mINSERT INTO "type_contracts" ("name", "duration", "role", "member_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", 0], ["duration", 12], ["role", 0], ["member_id", 6], ["created_at", "2022-08-15 23:38:32.572700"], ["updated_at", "2022-08-15 23:38:32.572700"]]
+  ↳ app/controllers/members_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/members_controller.rb:10:in `create'
+Completed 200 OK in 2061ms (Views: 1.1ms | ActiveRecord: 51.2ms | Allocations: 22372)
+
+
+Started PUT "/members/1" for 172.18.0.1 at 2022-08-15 23:38:46 +0000
+Processing by MembersController#update as */*
+  Parameters: {"name"=>"Natany Test 2", "salary_per_year"=>70000, "country"=>"brasil", "tags"=>["ruby-on-rails", "react"], "type_contract_attributes"=>{"name"=>0, "duration"=>12, "role"=>0}, "id"=>"1", "member"=>{"name"=>"Natany Test 2", "salary_per_year"=>70000, "country"=>"brasil", "tags"=>["ruby-on-rails", "react"], "type_contract_attributes"=>{"name"=>0, "duration"=>12, "role"=>0}}}
+  [1m[36mMember Load (0.7ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:18:in `update'
+Completed 404 Not Found in 12ms (ActiveRecord: 1.0ms | Allocations: 1637)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Member with 'id'=1):
+  
+app/controllers/members_controller.rb:18:in `update'
+Started PUT "/members/6" for 172.18.0.1 at 2022-08-15 23:38:56 +0000
+Processing by MembersController#update as */*
+  Parameters: {"name"=>"Natany Test 2", "salary_per_year"=>70000, "country"=>"brasil", "tags"=>["ruby-on-rails", "react"], "type_contract_attributes"=>{"name"=>0, "duration"=>12, "role"=>0}, "id"=>"6", "member"=>{"name"=>"Natany Test 2", "salary_per_year"=>70000, "country"=>"brasil", "tags"=>["ruby-on-rails", "react"], "type_contract_attributes"=>{"name"=>0, "duration"=>12, "role"=>0}}}
+  [1m[36mMember Load (1.4ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/members_controller.rb:22:in `update'
+  [1m[36mTypeContract Load (0.5ms)[0m  [1m[34mSELECT "type_contracts".* FROM "type_contracts" WHERE "type_contracts"."member_id" = $1 LIMIT $2[0m  [["member_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:22:in `update'
+  [1m[36mTypeContract Destroy (0.4ms)[0m  [1m[31mDELETE FROM "type_contracts" WHERE "type_contracts"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/members_controller.rb:22:in `update'
+  [1m[36mMember Update (0.5ms)[0m  [1m[33mUPDATE "members" SET "name" = $1, "updated_at" = $2 WHERE "members"."id" = $3[0m  [["name", "Natany Test 2"], ["updated_at", "2022-08-15 23:38:57.362719"], ["id", 6]]
+  ↳ app/controllers/members_controller.rb:22:in `update'
+  [1m[36mTypeContract Create (0.5ms)[0m  [1m[32mINSERT INTO "type_contracts" ("name", "duration", "role", "member_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", 0], ["duration", 12], ["role", 0], ["member_id", 6], ["created_at", "2022-08-15 23:38:57.369408"], ["updated_at", "2022-08-15 23:38:57.369408"]]
+  ↳ app/controllers/members_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/members_controller.rb:22:in `update'
+Completed 200 OK in 1028ms (Views: 1.9ms | ActiveRecord: 4.7ms | Allocations: 8515)
+
+
+Started GET "/members/6" for 172.18.0.1 at 2022-08-15 23:39:03 +0000
+Processing by MembersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:30:in `show'
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 903)
+
+
+Started DELETE "/members/6" for 172.18.0.1 at 2022-08-15 23:39:09 +0000
+Processing by MembersController#destroy as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/members_controller.rb:42:in `destroy'
+  [1m[36mTypeContract Load (0.4ms)[0m  [1m[34mSELECT "type_contracts".* FROM "type_contracts" WHERE "type_contracts"."member_id" = $1 LIMIT $2[0m  [["member_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:42:in `destroy'
+  [1m[36mTypeContract Destroy (0.3ms)[0m  [1m[31mDELETE FROM "type_contracts" WHERE "type_contracts"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/members_controller.rb:42:in `destroy'
+  [1m[36mMember Destroy (0.3ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/members_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/members_controller.rb:42:in `destroy'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 2.8ms | Allocations: 3543)
+
+
